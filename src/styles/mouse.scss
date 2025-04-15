@@ -1,0 +1,26 @@
+.dot-cursor {
+    // position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .dot-cursor.dot-hovered {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 0.15;
+  }
+
+  .dot-cursor.dot-invert {
+    mix-blend-mode: difference;
+  }
+
+  
+  
