@@ -3,7 +3,8 @@ import LandingPage from "../pages/LandingPage/LandingPage";
 import AboutPage from "../pages/AboutPage/AboutPage";
 
 const router = createBrowserRouter([
-  { path: "/landing", element: <LandingPage /> },
+  // { path: "/landing", element: <LandingPage /> },
+  { path: "/", element: <LandingPage /> },
   { path: "/about", element: <AboutPage /> },
 ]);
 

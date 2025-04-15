@@ -1,0 +1,55 @@
+.container {
+    height: 81px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 43px;
+    position: fixed; // Keep the navbar fixed at the top
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: transform 0.3s ease-in-out; // Smooth transition effect
+  }
+  
+  .navbarVisible {
+    transform: translateY(0);
+    transition: transform 0.1s ease-out;
+  }
+  
+  .navbarHidden {
+    transform: translateY(-100%);
+    transition: transform 0.8s ease-in-out;
+  }
+  
+  .content {
+    // background-color: green;
+    // height: 30px;
+  
+    display: flex;
+    flex-direction: row;
+    // align-items: ;
+    justify-content: space-between;
+  }
+  
+  .logoText {
+    font-family: var(--font-outfit);
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: white;
+    font-size: 32px;
+    z-index: 100;
+  }
+  
+  .sideButtonsContainer {
+    // background-color: rgb(17, 11, 146);
+  
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .jugad {
+    width: 85px;
+  }
+  

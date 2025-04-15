@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
-// import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import styles from "./LandingPage.module.scss";
 import Hero from "./Hero/Hero";
+import Hero695 from "./Hero/Hero695";
+import Hero730 from "./Hero/Hero730";
+import Services from "./Services/Services";
+import Carousel from "./Carousel/Carousel";
+import GlobalApiTrigger from "../../components/GlobalApiTrigger";
 // import Hero695 from "./Hero/Hero695";
 // import Hero730 from "./Hero/Hero730";
 // import Services from "./Services/Services";
@@ -33,16 +38,17 @@ function useViewport() {
 const LandingPage = () => {
   const { height } = useViewport();
 
-  let HeroComponent;
-  if (height <= 695) {
-    // HeroComponent = Hero695;
-    HeroComponent = Hero;
-  } else if (height <= 730) {
-    // HeroComponent = Hero730;
-    HeroComponent = Hero;
-  } else {
-    HeroComponent = Hero;
-  }
+  let HeroComponent = Hero;
+
+  //   if (height <= 695) {
+  //     // HeroComponent = Hero695;
+  //     HeroComponent = Hero;
+  //   } else if (height <= 730) {
+  //     // HeroComponent = Hero730;
+  //     HeroComponent = Hero;
+  //   } else {
+  //     HeroComponent = Hero;
+  //   }
 
   return (
     <div className={styles.container}>
@@ -50,10 +56,12 @@ const LandingPage = () => {
                 <Carousel />
             </div> */}
 
-      {/* <Navbar /> */}
+      <GlobalApiTrigger />
+
+      <Navbar />
       <HeroComponent />
-      {/* <Services/> */}
-      {/* <Carousel/> */}
+      <Services />
+      <Carousel />
       <div style={{ height: "300px" }}></div>
     </div>
   );
