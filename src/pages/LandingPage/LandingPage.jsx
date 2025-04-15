@@ -56,7 +56,7 @@ const LandingPage = () => {
                 <Carousel />
             </div> */}
 
-      <GlobalApiTrigger />
+      {/* <GlobalApiTrigger /> */}
 
       <Navbar />
       <HeroComponent />

@@ -8,15 +8,7 @@ import viteLogo from "/vite.svg";
 import GlobalApiTrigger from "./components/GlobalApiTrigger";
 
 function App() {
-  return (
-    <>
-      {/* <RouterProvider router={router} /> */}
-
-      <DotCursor />
-      {/* <GlobalApiTrigger /> */}
-      <RouterProvider router={router} />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

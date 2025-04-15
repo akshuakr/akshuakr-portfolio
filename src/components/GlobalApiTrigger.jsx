@@ -7,23 +7,27 @@ const GlobalApiTrigger = () => {
   const navigate = useNavigate();
   const { pathname } = location;
 
-  console.log(`Global API Triger component rendered`);
+  //   console.log(`Global API Triger component rendered`);
 
   useEffect(() => {
-    const validRoutes = ["/", "/LandingPage", "/landing"]; // Define your valid routes
+    const validRoutes = ["/", "/about", "/landing"]; // Define your valid routes
 
     if (!validRoutes.includes(pathname)) {
-      navigate("/", { replace: true });
+      console.log(`Invalid route`);
+      navigate("/");
       return;
     }
 
     const callApi = async () => {
       try {
-        console.log(`callAPI function called`);
+        // console.log(`callAPI function called`);
         // Parse query parameters from the current URL.
         const searchParams = new URLSearchParams(window.location.search);
+        console.log(searchParams);
         const sourceVal = searchParams.get("src") || "direct";
+        console.log(sourceVal);
         const campaignVal = searchParams.get("cmp") || "direct";
+        console.log(campaignVal);
 
         // Retrieve the UUID from localStorage or generate a new one.
         let uuid = localStorage.getItem("uuid");
@@ -35,6 +39,11 @@ const GlobalApiTrigger = () => {
           localStorage.setItem("uuid", uuid);
           localStorage.setItem("src", sourceVal);
           localStorage.setItem("cmp", campaignVal);
+        }
+
+        // Remove query parameters from the browser's address bar without reloading the page.
+        if (window.location.search) {
+          navigate(window.location.pathname, { replace: true });
         }
 
         // Prepare the payload for the API call
@@ -53,12 +62,12 @@ const GlobalApiTrigger = () => {
           throw new Error("Network response was not ok");
         }
         const data = await res.json();
-        console.log("Global API call result data:", data);
+        // console.log("Global API call result data:", data);
 
-        // Remove query parameters from the browser's address bar without reloading the page.
-        if (window.location.search) {
-          navigate(window.location.pathname, { replace: true });
-        }
+        // // Remove query parameters from the browser's address bar without reloading the page.
+        // if (window.location.search) {
+        //   navigate(window.location.pathname, { replace: true });
+        // }
       } catch (error) {
         console.error("Global API call error:", error);
       }
