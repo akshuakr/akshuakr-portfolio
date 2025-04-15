@@ -42,7 +42,7 @@ const Hero = () => {
         <div className={`${styles.heroName} cursor-invert-effect`}>Akshansh Rohilla</div>
       </div>
       <div className={`${styles.tagline} cursor-invert-effect`}>
-        Turning ideas into real, working products.
+        Turning ideas into real, working products. blah blah
       </div>
       <div className={`${styles.heroDetailsContainer} `}>
         <div className={`${styles.left} `}>
