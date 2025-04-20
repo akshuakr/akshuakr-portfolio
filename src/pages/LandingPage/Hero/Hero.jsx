@@ -115,7 +115,7 @@ const Hero = () => {
         <div className={`${styles.middle} `}>
           <div className={`${styles.circularWrapper} cursor-invert-effect`}>
             <img
-              src="/images/akshu1000.png"
+              src="/images/akshu1000.webp"
               alt="Akshu Don"
               width={320}
               height={320}
