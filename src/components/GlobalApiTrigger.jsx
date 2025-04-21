@@ -69,7 +69,7 @@ const GlobalApiTrigger = () => {
       }
     };
 
-    // callApi();
+    callApi();
   }, []);
 
   return null; // This component exists solely for side effects.

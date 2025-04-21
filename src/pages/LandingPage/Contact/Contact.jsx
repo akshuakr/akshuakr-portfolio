@@ -1,28 +1,56 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./Contact.module.scss";
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const uuid = localStorage.getItem("uuid");
+
+    const payload = {
+      uuid,
+      ...formData,
+    };
+
+    try {
+      // const baseUrl = "http://localhost:8000";
+      const baseUrl = "https://api.akshuakr.com";
+      const response = await fetch(`${baseUrl}/api/v1/contact/save-contact-request`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-    
-        setFormData((prev) => ({
-          ...prev,
-          [name]: value,
-        }));
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Form submitted:', formData);
-        // You can send formData to your backend here
-      };
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Form successfully submitted:", result);
+        // Optionally reset form or show success message
+      } else {
+        const error = await response.json();
+        console.error("Error submitting form:", error);
+      }
+    } catch (error) {
+      console.error("Network or server error:", error);
+    }
+  };
   return (
     <div className={`${styles.container} cursor-invert-effect`}>
       <div className={styles.left}>
@@ -81,10 +109,7 @@ const Contact = () => {
         </div>
 
         <div className={styles.formButton}>
-          <button
-            className={`button button-sm button-dot dot-hover-effect`}
-            onClick={handleSubmit}
-          >
+          <button className={`button button-sm button-dot dot-hover-effect`} onClick={handleSubmit}>
             <span data-text="Send Message">Send Message</span>
           </button>
         </div>
