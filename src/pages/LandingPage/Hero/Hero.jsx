@@ -49,7 +49,6 @@ const Hero = () => {
       </div>
 
       <div className={styles.heroDetailsContainerResponsive}>
-        
         <div className={`${styles.middle} `}>
           <div className={`${styles.circularWrapper} cursor-invert-effect`}>
             <img
@@ -63,67 +62,89 @@ const Hero = () => {
         </div>
 
         <div className={`${styles.leftChildren} cursor-invert-effect`}>
-            <h6 className={`${styles.leftTitles} ${styles.sectionHeadingGradient}`}>Biography</h6>
-            <p className={styles.leftDescriptions}>
-              I’m a full-stack developer with 3 years of experience in the MERN stack, along with
-              expertise in Next.js and FastAPI. I’ve worked in early-stage startups, where I built
-              and shipped scalable web applications end-to-end and handled production deployments
-              with reliable infrastructure.
-            </p>
-            <p className={styles.leftDescriptions}>
-              A graduate of{" "}
-              <span style={{ color: "white", fontWeight: "500" }}>
-                Delhi Technological University (formerly DCE)
-              </span>
-              , I’m open to both freelance work and full-time roles where I can contribute and grow
-              as a developer.
-            </p>
+          <h6 className={`${styles.leftTitles} ${styles.sectionHeadingGradient}`}>Biography</h6>
+          <p className={styles.leftDescriptions}>
+            I’m a full-stack developer with 3 years of experience in the MERN stack, along with
+            expertise in Next.js and FastAPI. I’ve worked in early-stage startups, where I built and
+            shipped scalable web applications end-to-end and handled production deployments with
+            reliable infrastructure.
+          </p>
+          <p className={styles.leftDescriptions}>
+            A graduate of{" "}
+            <span style={{ color: "white", fontWeight: "500" }}>
+              Delhi Technological University (formerly DCE)
+            </span>
+            , I’m open to both freelance work and full-time roles where I can contribute and grow as
+            a developer.
+          </p>
+        </div>
+
+        <div className={`${styles.leftChildren} cursor-invert-effect`}>
+          <h6 className={`${styles.leftTitles} ${styles.sectionHeadingGradient}`}>Skills</h6>
+          <div className={styles["list-inline-dot"]}>
+            <span>•&nbsp;&nbsp;JavaScript (ES6+)</span>
+            <span>•&nbsp;&nbsp;React</span>
+            <span>•&nbsp;&nbsp;Next.js</span>
+            <span>•&nbsp;&nbsp;Node.js</span>
+            <span>•&nbsp;&nbsp;Express</span>
+            <span>•&nbsp;&nbsp;MongoDB</span>
+            <span>•&nbsp;&nbsp;MySQL</span>
+            <span>•&nbsp;&nbsp;Python (FastAPI)</span>
+            <span>•&nbsp;&nbsp;REST APIs</span>
+            <span>•&nbsp;&nbsp;Tailwind</span>
+            <span>•&nbsp;&nbsp;HTML</span>
+            <span>•&nbsp;&nbsp;CSS</span>
+            <span>•&nbsp;&nbsp;Git</span>
+            <span>•&nbsp;&nbsp;CI/CD</span>
+            <span>•&nbsp;&nbsp;NGINX</span>
+            <span>•&nbsp;&nbsp;PM2</span>
+            <span>•&nbsp;&nbsp;Linux</span>
+            <span>•&nbsp;&nbsp;AWS EC2</span>
+            <span>•&nbsp;&nbsp;AWS S3</span>
+            <span>•&nbsp;&nbsp;Microsoft Azure</span>
           </div>
+        </div>
 
-          <div className={`${styles.leftChildren} cursor-invert-effect`}>
-            <h6 className={`${styles.leftTitles} ${styles.sectionHeadingGradient}`}>Skills</h6>
-            <div className={styles["list-inline-dot"]}>
-              <span>•&nbsp;&nbsp;JavaScript (ES6+)</span>
-              <span>•&nbsp;&nbsp;React</span>
-              <span>•&nbsp;&nbsp;Next.js</span>
-              <span>•&nbsp;&nbsp;Node.js</span>
-              <span>•&nbsp;&nbsp;Express</span>
-              <span>•&nbsp;&nbsp;MongoDB</span>
-              <span>•&nbsp;&nbsp;MySQL</span>
-              <span>•&nbsp;&nbsp;Python (FastAPI)</span>
-              <span>•&nbsp;&nbsp;REST APIs</span>
-              <span>•&nbsp;&nbsp;Tailwind</span>
-              <span>•&nbsp;&nbsp;HTML</span>
-              <span>•&nbsp;&nbsp;CSS</span>
-              <span>•&nbsp;&nbsp;Git</span>
-              <span>•&nbsp;&nbsp;CI/CD</span>
-              <span>•&nbsp;&nbsp;NGINX</span>
-              <span>•&nbsp;&nbsp;PM2</span>
-              <span>•&nbsp;&nbsp;Linux</span>
-              <span>•&nbsp;&nbsp;AWS EC2</span>
-              <span>•&nbsp;&nbsp;AWS S3</span>
-              <span>•&nbsp;&nbsp;Microsoft Azure</span>
-            </div>
-          </div>
-
-          <div className={styles.bulletsContainer}>
-
+        <div className={styles.bulletsContainer}>
           <div className={`${styles.rightChildren}`}>
             <h6 className={`${styles.rightTitle} ${styles.sectionHeadingGradient1}`}>
-              YEARS OF <br/>EXPERIENCE
+              YEARS OF <br />
+              EXPERIENCE
             </h6>
             <div className={styles.rightDetails}>3</div>
           </div>
 
           <div className={`${styles.rightChildren}`}>
             <h6 className={`${styles.rightTitle} ${styles.sectionHeadingGradient1}`}>
-              STARTUPS <br/>WORKED WITH
+              STARTUPS <br />
+              WORKED WITH
             </h6>
             <div className={styles.rightDetails}>3</div>
           </div>
+        </div>
 
+        <div className={styles.leftChildren}>
+          <h6
+            className={`${styles.rightTitle} ${styles.sectionHeadingGradient1} cursor-invert-effect`}
+          >
+            Connect
+          </h6>
+
+          <div className={styles.connectIconsContainer}>
+            <a className="button-circle button-circle-sm dot-hover-effect" href="#">
+              <i className="bi bi-linkedin"></i>
+              <i className="bi bi-linkedin"></i>
+            </a>
+            <a className="button-circle button-circle-sm dot-hover-effect" href="#">
+              <i className="bi bi-github"></i>
+              <i className="bi bi-github"></i>
+            </a>
+            <a className="button-circle button-circle-sm dot-hover-effect" href="#">
+              <i className="bi bi-twitter-x"></i>
+              <i className="bi bi-twitter-x"></i>
+            </a>
           </div>
-
+        </div>
       </div>
 
       <div className={`${styles.heroDetailsContainer} `}>
@@ -207,7 +228,6 @@ const Hero = () => {
         </div>
 
         <div className={`${styles.right} cursor-invert-effect`}>
-
           <div className={`${styles.rightChildren}`}>
             <h6 className={`${styles.rightTitle} ${styles.sectionHeadingGradient1}`}>
               YEARS OF EXPERIENCE
@@ -228,6 +248,7 @@ const Hero = () => {
             >
               Connect
             </h6>
+
             <div className={styles.connectIconsContainer}>
               <a className="button-circle button-circle-sm dot-hover-effect" href="#">
                 <i className="bi bi-linkedin"></i>

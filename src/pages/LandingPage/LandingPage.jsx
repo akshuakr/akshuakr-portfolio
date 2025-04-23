@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import styles from "./LandingPage.module.scss";
 import Hero from "./Hero/Hero";
-import Hero695 from "./Hero/Hero695";
-import Hero730 from "./Hero/Hero730";
+// import Hero695 from "./Hero/Hero695";
+// import Hero730 from "./Hero/Hero730";
 import Services from "./Services/Services";
 import Carousel from "./Carousel/Carousel";
 import GlobalApiTrigger from "../../components/GlobalApiTrigger";
@@ -37,31 +37,31 @@ function useViewport() {
 }
 
 const LandingPage = () => {
-  const { height, width } = useViewport();
+  // const { height, width } = useViewport();
 
   // let HeroComponent = Hero;
-  let HeroComponent;
+  // let HeroComponent;
 
-  if (width < 450) {
-    HeroComponent = Hero;
-    // console.log(`width < 450`);
-  } else if (height <= 695) {
-    HeroComponent = Hero695;
-    // console.log(`${width} ${height}`);
-    // console.log(`height <= 695`);
+  // if (width < 450) {
+  //   HeroComponent = Hero;
+  //   // console.log(`width < 450`);
+  // } else if (height <= 695) {
+  //   HeroComponent = Hero695;
+  //   // console.log(`${width} ${height}`);
+  //   // console.log(`height <= 695`);
 
-    // HeroComponent = Hero;
-  } else if (height <= 730) {
-    HeroComponent = Hero730;
-    // console.log(`${width} ${height}`);
-    // console.log(`height < 730`);
+  //   // HeroComponent = Hero;
+  // } else if (height <= 730) {
+  //   HeroComponent = Hero730;
+  //   // console.log(`${width} ${height}`);
+  //   // console.log(`height < 730`);
 
-    // HeroComponent = Hero;
-  } else {
-    HeroComponent = Hero;
-    // console.log(`${width} ${height}`);
-    // console.log(`else`);
-  }
+  //   // HeroComponent = Hero;
+  // } else {
+  //   HeroComponent = Hero;
+  //   // console.log(`${width} ${height}`);
+  //   // console.log(`else`);
+  // }
 
   return (
     <div className={styles.container}>
