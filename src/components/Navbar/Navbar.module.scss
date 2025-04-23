@@ -10,6 +10,16 @@
     right: 0;
     z-index: 100;
     transition: transform 0.3s ease-in-out; // Smooth transition effect
+
+    @media (max-width: 375px){
+      // background-color: #fff;
+      padding: 0px 16px;
+    }
+
+    @media (max-width: 450px){
+      // background-color: #fff;
+      padding: 0px 16px;
+    }
   }
   
   .navbarVisible {
@@ -28,7 +38,7 @@
   
     display: flex;
     flex-direction: row;
-    // align-items: ;
+    align-items: center;
     justify-content: space-between;
   }
   
@@ -39,6 +49,20 @@
     color: white;
     font-size: 32px;
     z-index: 100;
+
+    @media (max-width: 375px){
+      // background-color: #fff;
+      // font-size: 26px;
+
+      font-size: 22px;
+    }
+
+    @media (max-width: 450px){
+      // background-color: #fff;
+      // font-size: 26px;
+
+      font-size: 22px;
+    }
   }
   
   .sideButtonsContainer {
@@ -47,9 +71,22 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
+
+    @media (max-width: 375px){
+      gap: 5px;
+    }
+
+    @media (max-width: 450px){
+      gap: 5px;
+    }
   }
   
   .jugad {
     width: 85px;
+
+    @media (max-width: 530px){
+      // background-color: #fff;
+      // width: 65px;
+    }
   }
   

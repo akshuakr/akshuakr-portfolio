@@ -44,23 +44,23 @@ const LandingPage = () => {
 
   if (width < 450) {
     HeroComponent = Hero;
-    console.log(`width < 450`);
+    // console.log(`width < 450`);
   } else if (height <= 695) {
     HeroComponent = Hero695;
     // console.log(`${width} ${height}`);
-    console.log(`height <= 695`);
+    // console.log(`height <= 695`);
 
     // HeroComponent = Hero;
   } else if (height <= 730) {
     HeroComponent = Hero730;
     // console.log(`${width} ${height}`);
-    console.log(`height < 730`);
+    // console.log(`height < 730`);
 
     // HeroComponent = Hero;
   } else {
     HeroComponent = Hero;
     // console.log(`${width} ${height}`);
-    console.log(`else`);
+    // console.log(`else`);
   }
 
   return (
@@ -72,10 +72,11 @@ const LandingPage = () => {
       {/* <GlobalApiTrigger /> */}
 
       <Navbar />
-      <HeroComponent />
-      <Services />
-      <Carousel />
-      <Contact />
+      {/* <HeroComponent /> */}
+      <Hero/>
+      {/* <Services /> */}
+      {/* <Carousel /> */}
+      {/* <Contact /> */}
       <div style={{ height: "300px" }}></div>
     </div>
   );

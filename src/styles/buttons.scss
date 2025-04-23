@@ -97,9 +97,22 @@ a, button {
 			}
 		}
 	}
+
+	@media (max-width: 375px){
+		// background-color: red;
+		font-size: 0.8em;
+		// padding: 0px 0px;
+	  }
+
+	  @media (max-width: 450px){
+		// background-color: red;
+		font-size: 0.8em;
+		// padding: 0px 0px;
+	  }
 }
 .button-sm { 
 	padding: 10px 20px;
+	
 }
 .button-lg { 
 	padding: 16px 42px; 
@@ -123,6 +136,7 @@ a, button {
 }
 .button-dot {
 	padding: 13px 46px 13px 30px;
+	
 	&:before {
 		content: '';
 		position: absolute;
@@ -143,6 +157,9 @@ a, button {
 	}
 	&.button-sm { 
 		padding: 10px 34px 10px 20px;
+		@media (max-width: 375px){
+			padding: 9px 24px;
+		}
 		&:before {
 			right: 20px;
 		}
@@ -151,6 +168,9 @@ a, button {
 		padding: 16px 60px 16px 42px; 
 	}
 	&.button-white {
+		@media (max-width: 375px){
+			padding: 9px 30px;
+		}
 		&:before {
 			background: black;
 		}
