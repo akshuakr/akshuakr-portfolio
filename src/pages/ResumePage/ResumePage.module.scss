@@ -1,14 +1,14 @@
 .container {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    border: none; /* Ensure no border on the container */
-    background: transparent; /* Ensure no background */
-    width: 100%; /* Full width for responsiveness */
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  border: none; /* Ensure no border on the container */
+  background: transparent; /* Ensure no background */
+  width: 100%; /* Full width for responsiveness */
 
-    // padding-bottom: 250px;
-    // padding-top: 81px;
-  }
+  // padding-bottom: 250px;
+  // padding-top: 81px;
+}
 
 .dimensions {
   width: 100%;
@@ -19,7 +19,14 @@
 
   display: block;
   margin: 0 auto;
-//   background: transparent;
-// background: white;
+  //   background: transparent;
+  // background: white;
   box-shadow: none;
+
+  @media (max-width: 450px) {
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    transform: scale(1); /* Ensure no unnatural scaling */
+    object-fit: contain; /* Ensure the PDF fits within the iframe */
+  }
 }
