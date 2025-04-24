@@ -10,7 +10,7 @@ const GlobalApiTrigger = () => {
   //   console.log(`Global API Triger component rendered`);
 
   useEffect(() => {
-    const validRoutes = ["/", "/about", "/landing"]; // Define your valid routes
+    const validRoutes = ["/", "/about", "/landing", "/resume"]; // Define your valid routes
 
     if (!validRoutes.includes(pathname)) {
       console.log(`Invalid route`);
