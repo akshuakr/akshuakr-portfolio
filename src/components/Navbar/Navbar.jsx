@@ -89,18 +89,19 @@ const Navbar = () => {
             </button>
 
             {isMenuOpen && (
-              <div className={styles.dropdownMenu}>
+              <div className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}>
                 <a href="#about" className={`${styles.menuItem} dot-hover-effect`}>
-                  About
+                  <i className="bi bi-arrow-right"></i>About
                 </a>
                 <a href="#services" className={`${styles.menuItem} dot-hover-effect`}>
-                  Services
+                  <i className="bi bi-arrow-right"></i>Services
                 </a>
+
                 <a href="#contact" className={`${styles.menuItem} dot-hover-effect`}>
-                  Contact
+                  <i className="bi bi-arrow-right"></i>Contact
                 </a>
                 <a onClick={handleOpenResume} className={`${styles.menuItem} dot-hover-effect`}>
-                  Resume
+                  <i className="bi bi-arrow-right"></i>Resume
                 </a>
               </div>
             )}
