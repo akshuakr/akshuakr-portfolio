@@ -52,6 +52,7 @@ const Carousel = () => {
               height={src.height * 0.35}
               width={src.width * 0.35}
               alt="carousel item"
+              className={styles.images}
               loading="lazy"
             />
           </div>

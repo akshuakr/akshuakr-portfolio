@@ -24,7 +24,7 @@ const useScrollDirection = () => {
       timeoutId = setTimeout(() => {
         setScrollStopped(true);
         setScrollDirection("up"); // force show after stop
-      }, 2200); // 200ms of no scrolling triggers stop
+      }, 1400); // 200ms of no scrolling triggers stop
     };
 
     window.addEventListener("scroll", updateScrollDirection);
