@@ -52,7 +52,7 @@ const Contact = () => {
     }
   };
   return (
-    <div className={`${styles.container} cursor-invert-effect`}>
+    <div id="contact" className={`${styles.container} cursor-invert-effect`}>
       <div className={styles.left}>
         <div className={styles.sectionIntro}>Contact</div>
         <div className={styles.sectionHeading}>
