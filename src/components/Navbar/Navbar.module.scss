@@ -1,92 +1,91 @@
 .container {
-    height: 81px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 43px;
-    position: fixed; // Keep the navbar fixed at the top
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    transition: transform 0.3s ease-in-out; // Smooth transition effect
+  height: 81px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 43px;
+  position: fixed; // Keep the navbar fixed at the top
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: transform 0.3s ease-in-out; // Smooth transition effect
 
-    @media (max-width: 375px){
-      // background-color: #fff;
-      // padding: 0px 16px;
-    }
-
-    @media (max-width: 450px){
-      // background-color: #fff;
-      padding: 0px 20px;
-    }
+  @media (max-width: 375px) {
+    // background-color: #fff;
+    // padding: 0px 16px;
   }
-  
-  .navbarVisible {
-    transform: translateY(0);
-    transition: transform 0.1s ease-out;
+
+  @media (max-width: 450px) {
+    // background-color: #fff;
+    padding: 0px 20px;
   }
-  
-  .navbarHidden {
-    transform: translateY(-100%);
-    transition: transform 0.8s ease-in-out;
+}
+
+.navbarVisible {
+  transform: translateY(0);
+  transition: transform 0.5s ease-out;
+}
+
+.navbarHidden {
+  transform: translateY(-100%);
+  transition: transform 0.7s ease-in-out;
+}
+
+.content {
+  // background-color: green;
+  // height: 30px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoText {
+  font-family: var(--font-outfit);
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  color: white;
+  font-size: 32px;
+  z-index: 100;
+
+  @media (max-width: 375px) {
+    // background-color: #fff;
+    // font-size: 26px;
+
+    font-size: 22px;
   }
-  
-  .content {
-    // background-color: green;
-    // height: 30px;
-  
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+
+  @media (max-width: 450px) {
+    // background-color: #fff;
+    // font-size: 26px;
+
+    font-size: 22px;
   }
-  
-  .logoText {
-    font-family: var(--font-outfit);
-    font-weight: 500;
-    letter-spacing: -0.3px;
-    color: white;
-    font-size: 32px;
-    z-index: 100;
+}
 
-    @media (max-width: 375px){
-      // background-color: #fff;
-      // font-size: 26px;
+.sideButtonsContainer {
+  // background-color: rgb(17, 11, 146);
 
-      font-size: 22px;
-    }
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 
-    @media (max-width: 450px){
-      // background-color: #fff;
-      // font-size: 26px;
-
-      font-size: 22px;
-    }
+  @media (max-width: 375px) {
+    gap: 5px;
   }
-  
-  .sideButtonsContainer {
-    // background-color: rgb(17, 11, 146);
-  
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
 
-    @media (max-width: 375px){
-      gap: 5px;
-    }
-
-    @media (max-width: 450px){
-      gap: 5px;
-    }
+  @media (max-width: 450px) {
+    gap: 5px;
   }
-  
-  .jugad {
-    width: 85px;
+}
 
-    @media (max-width: 530px){
-      // background-color: #fff;
-      // width: 65px;
-    }
+.jugad {
+  width: 85px;
+
+  @media (max-width: 530px) {
+    // background-color: #fff;
+    // width: 65px;
   }
-  
+}
