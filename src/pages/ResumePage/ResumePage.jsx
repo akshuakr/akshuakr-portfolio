@@ -4,7 +4,7 @@ import styles from "./ResumePage.module.scss";
 import Navbar from "../../components/Navbar/Navbar";
 
 const ResumeViewer = () => {
-    const initialZoom = "75";
+  const initialZoom = "75";
   return (
     <div className={styles.container}>
       {/* <Navbar /> */}

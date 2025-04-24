@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 
 const useScrollDirection = () => {
@@ -39,6 +40,31 @@ const useScrollDirection = () => {
 
 const Navbar = () => {
   const scrollDirection = useScrollDirection();
+  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  // Handle clicks outside the menu
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleOpenResume = () => {
+    navigate("/resume");
+  };
 
   return (
     <div
@@ -54,13 +80,31 @@ const Navbar = () => {
               Let&apos;s Talk
             </span>
           </a>
+          <div className={styles.menuContainer} ref={menuRef}>
+            <button
+              className={`button button-sm button-dot button-white dot-hover-effect`}
+              onClick={toggleMenu}
+            >
+              <span data-text="Menu">Menu</span>
+            </button>
 
-          <button
-            className={`button button-sm button-dot button-white dot-hover-effect`}
-            onClick={() => console.log("Menu Clicked")}
-          >
-            <span data-text="Menu">Menu</span>
-          </button>
+            {isMenuOpen && (
+              <div className={styles.dropdownMenu}>
+                <a href="#about" className={`${styles.menuItem} dot-hover-effect`}>
+                  About
+                </a>
+                <a href="#services" className={`${styles.menuItem} dot-hover-effect`}>
+                  Services
+                </a>
+                <a href="#contact" className={`${styles.menuItem} dot-hover-effect`}>
+                  Contact
+                </a>
+                <a onClick={handleOpenResume} className={`${styles.menuItem} dot-hover-effect`}>
+                  Resume
+                </a>
+              </div>
+            )}
+          </div>
         </div>
         {/* <div className={`dot-hover-effect`}>buttons</div> */}
       </div>

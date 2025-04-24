@@ -14,7 +14,7 @@ const LandingPage = () => {
       <Services />
       <Carousel />
       <Contact />
-      <div style={{ height: "300px" }}></div>
+      <div style={{ height: "100px" }}></div>
     </div>
   );
 };

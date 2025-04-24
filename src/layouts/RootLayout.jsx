@@ -5,7 +5,7 @@ import DotCursor from "../components/DotCursor";
 const RootLayout = () => {
   return (
     <>
-      {/* <DotCursor /> */}
+      <DotCursor />
       <GlobalApiTrigger />
       <Outlet />
     </>

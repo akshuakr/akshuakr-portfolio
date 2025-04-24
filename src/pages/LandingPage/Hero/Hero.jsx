@@ -37,7 +37,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className={styles.hero}>
+    <div id="about" className={styles.hero}>
       <div className={styles.heroNameWrapper}>
         <div className={`${styles.heroName} cursor-invert-effect`}>
           Akshansh

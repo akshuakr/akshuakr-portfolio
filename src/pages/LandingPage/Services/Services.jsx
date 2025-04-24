@@ -2,7 +2,7 @@ import styles from "./Services.module.scss";
 
 const Services = () => {
   return (
-    <div className={`${styles.container} cursor-invert-effect`}>
+    <div id="services" className={`${styles.container} cursor-invert-effect`}>
       <div className={styles.left}>
         <div className={styles.sectionIntro}>Services</div>
         <div className={styles.sectionHeading}>
