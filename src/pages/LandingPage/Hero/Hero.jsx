@@ -131,15 +131,30 @@ const Hero = () => {
           </h6>
 
           <div className={styles.connectIconsContainer}>
-            <a className="button-circle button-circle-sm dot-hover-effect" href="#">
+            <a
+              className="button-circle button-circle-sm dot-hover-effect"
+              href="https://www.linkedin.com/in/akshuakr/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="bi bi-linkedin"></i>
               <i className="bi bi-linkedin"></i>
             </a>
-            <a className="button-circle button-circle-sm dot-hover-effect" href="#">
+            <a
+              className="button-circle button-circle-sm dot-hover-effect"
+              href="https://github.com/akshuakr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="bi bi-github"></i>
               <i className="bi bi-github"></i>
             </a>
-            <a className="button-circle button-circle-sm dot-hover-effect" href="#">
+            <a
+              className="button-circle button-circle-sm dot-hover-effect"
+              href="https://x.com/akshuakr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="bi bi-twitter-x"></i>
               <i className="bi bi-twitter-x"></i>
             </a>
@@ -250,15 +265,30 @@ const Hero = () => {
             </h6>
 
             <div className={styles.connectIconsContainer}>
-              <a className="button-circle button-circle-sm dot-hover-effect" href="#">
+              <a
+                className="button-circle button-circle-sm dot-hover-effect"
+                href="https://www.linkedin.com/in/akshuakr/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bi bi-linkedin"></i>
                 <i className="bi bi-linkedin"></i>
               </a>
-              <a className="button-circle button-circle-sm dot-hover-effect" href="#">
+              <a
+                className="button-circle button-circle-sm dot-hover-effect"
+                href="https://github.com/akshuakr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bi bi-github"></i>
                 <i className="bi bi-github"></i>
               </a>
-              <a className="button-circle button-circle-sm dot-hover-effect" href="#">
+              <a
+                className="button-circle button-circle-sm dot-hover-effect"
+                href="https://x.com/akshuakr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bi bi-twitter-x"></i>
                 <i className="bi bi-twitter-x"></i>
               </a>
