@@ -4,10 +4,11 @@ import styles from "./ResumePage.module.scss";
 import Navbar from "../../components/Navbar/Navbar";
 
 const ResumeViewer = () => {
+    const initialZoom = "75";
   return (
     <div className={styles.container}>
       {/* <Navbar /> */}
-      <iframe src={resume} title="Resume" className={styles.dimensions} />
+      <iframe src={`${resume}#zoom=${initialZoom}`} title="Resume" className={styles.dimensions} />
     </div>
   );
 };
