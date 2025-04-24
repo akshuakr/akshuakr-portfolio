@@ -1,10 +1,27 @@
 .carouselWrapper {
-  width: 100%;
+  width: 93%;
   overflow: hidden;
   position: relative;
   // height: 80px;
 
   margin-top: 20px;
+
+  background-color: rgb(255, 255, 255);
+  // padding: 0px 20px;
+  border-radius: 50px;
+
+  // margin-right: 60px;
+  // margin-left: 60px;
+
+  align-self: center;
+
+  @media (max-width: 450px) {
+    background-color: rgb(255, 255, 255);
+    // padding: 0px 20px;
+    border-radius: 50px;
+    // width: 90%;
+    width: 100%;
+  }
 }
 
 .carousel {
@@ -13,9 +30,8 @@
   animation: scroll-left 50s linear infinite;
   width: max-content;
 
-  @media (max-width: 450px){
-  animation: scroll-left 25s linear infinite;
-
+  @media (max-width: 450px) {
+    animation: scroll-left 35s linear infinite;
   }
 }
 
@@ -31,8 +47,14 @@
   align-items: center;
 
   img {
-    filter: grayscale(100%) brightness(100%) contrast(100%);
-    transition: filter 0.3s ease;
+    // filter: grayscale(100%) brightness(100%) contrast(100%);
+    // transition: filter 0.3s ease;
+
+    filter: none;
+
+    @media (max-width: 450px) {
+      filter: none;
+    }
   }
 
   // On hover, restore original color
@@ -42,10 +64,10 @@
   }
 }
 
-.images{
+.images {
   // width: 50px;
-  @media (max-width: 450px){
-    width: 40px;
+  @media (max-width: 450px) {
+    width: 55px;
   }
 }
 
