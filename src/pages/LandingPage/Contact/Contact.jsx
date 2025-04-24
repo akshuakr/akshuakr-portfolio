@@ -9,6 +9,9 @@ const Contact = () => {
     message: "",
   });
 
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -16,6 +19,10 @@ const Contact = () => {
       ...prev,
       [name]: value,
     }));
+
+    // Clear messages while typing again
+    setSuccess(false);
+    setError(false);
   };
 
   const handleSubmit = async (e) => {
@@ -42,13 +49,30 @@ const Contact = () => {
       if (response.ok) {
         const result = await response.json();
         console.log("Form successfully submitted:", result);
+
+        setSuccess(true);
+        setError(false);
+
+        // Clear form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
         // Optionally reset form or show success message
       } else {
         const error = await response.json();
         console.error("Error submitting form:", error);
+
+        setSuccess(false);
+        setError(true);
       }
     } catch (error) {
       console.error("Network or server error:", error);
+
+      setSuccess(false);
+      setError(true);
     }
   };
   return (
@@ -113,6 +137,13 @@ const Contact = () => {
             <span data-text="Send Message">Send Message</span>
           </button>
         </div>
+
+        {success && (
+          <div className={styles.successMessage}>Thank you! Your Message has been sent.</div>
+        )}
+        {error && (
+          <div className={styles.errorMessage}>Something went wrong, Please try again!</div>
+        )}
       </div>
     </div>
   );

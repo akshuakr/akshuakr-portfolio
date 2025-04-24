@@ -243,3 +243,21 @@ textarea {
 
   margin-top: 20px;
 }
+
+.successMessage {
+  align-self: flex-end;
+  margin-top: 16px;
+
+  color: #32cd32;
+  font-family: var(--font-outfit);
+  font-weight: 500;
+}
+
+.errorMessage {
+  align-self: flex-end;
+  margin-top: 16px;
+
+  color: #e32227;
+  font-family: var(--font-outfit);
+  font-weight: 500;
+}
