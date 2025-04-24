@@ -76,7 +76,7 @@ const LandingPage = () => {
       <Hero/>
       <Services />
       <Carousel />
-      {/* <Contact /> */}
+      <Contact />
       <div style={{ height: "300px" }}></div>
     </div>
   );

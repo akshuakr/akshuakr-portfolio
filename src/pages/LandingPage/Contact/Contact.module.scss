@@ -6,12 +6,23 @@
 
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 450px) {
+    // margin-top: 10px;
+    flex-direction: column;
+    padding: 0px 20px;
+    margin-top: 35px;
+  }
 }
 
 .left {
   //   background-color: yellow;
   // height: 100%;
   width: 32%;
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 }
 
 .sectionIntro {
@@ -25,6 +36,10 @@
   letter-spacing: 1px;
 
   color: rgba(255, 255, 255, 0.4);
+
+  @media (max-width: 450px) {
+    font-size: 13.5px;
+  }
 }
 
 .sectionIntro:before {
@@ -44,6 +59,11 @@
   font-size: 64px;
   font-family: var(--font-outfit), sans-serif;
   font-weight: 500;
+
+  @media (max-width: 450px) {
+    font-size: 38px;
+    margin-bottom: 10px;
+  }
 }
 
 .sectionHeadingGradient {
@@ -58,6 +78,10 @@
 
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 }
 
 .contactDetails {
@@ -74,6 +98,12 @@
 
   margin-bottom: 40px;
 
+  @media (max-width: 450px) {
+    flex-direction: column;
+    margin-bottom: 16px;
+    // width: 100%;
+  }
+
   // background-color: #ff82f3;
 }
 
@@ -86,6 +116,11 @@
   line-height: 1.2;
 
   margin-bottom: 10px;
+
+  @media (max-width: 450px) {
+    font-size: 13.5px;
+    margin-bottom: 3px;
+  }
 }
 
 .detailsInfo {
@@ -94,6 +129,10 @@
   font-weight: 500;
 
   letter-spacing: -0.3px;
+
+  @media (max-width: 450px) {
+    font-size: 23px;
+  }
 }
 
 .emailContainer {
@@ -124,6 +163,11 @@
   //   background-color: #181A1C;
   //   background: #181A1C;
   //   background: red;
+
+  @media (max-width: 450px) {
+    flex-direction: column;
+    // width: 100%;
+  }
 }
 
 .nameAndEmailClass {
@@ -142,6 +186,10 @@
 
   outline: none;
   //   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5);
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 }
 
 .nameAndEmailClass:focus {
