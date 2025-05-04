@@ -47,7 +47,13 @@ const GlobalApiTrigger = () => {
         }
 
         // Prepare the payload for the API call
-        const payload = { uuid, source: sourceVal, campaign: campaignVal };
+        // const payload = { uuid, source: sourceVal, campaign: campaignVal };
+
+        const payload = {
+          uuid: localStorage.getItem("uuid"), // always current value
+          source: localStorage.getItem("src"),
+          campaign: localStorage.getItem("cmp"),
+        };
 
         // Send the POST request to your API endpoint.
         // const baseUrl = "http://localhost:8000";
