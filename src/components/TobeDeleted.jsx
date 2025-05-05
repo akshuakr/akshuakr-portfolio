@@ -7,9 +7,9 @@ const GlobalApiTrigger = () => {
   const navigate = useNavigate();
   const { pathname } = location;
   const turnstileRef = useRef(null);
-  // const [scriptLoaded, setScriptLoaded] = useState(false);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
   const [token, setToken] = useState(null);
-  const widgetIdRef = useRef(null);
+  const [error, setError] = useState(null);
 
   // Load and render Turnstile
   useEffect(() => {
@@ -17,20 +17,19 @@ const GlobalApiTrigger = () => {
     script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
     script.async = true;
     script.defer = true;
-
     script.onload = () => {
+    //   setScriptLoaded(true);
       if (window.turnstile && turnstileRef.current) {
-        // Store the widget ID returned by render
-        widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
-          sitekey: "0x4AAAAAABaVYnWlsS_i2pxG",
+        window.turnstile.render(turnstileRef.current, {
+          sitekey: process.env.REACT_APP_TURNSTILE_SITE_KEY || "0x4AAAAAABaVYnWlsS_i2pxG",
           action: "track-visit",
           callback: (receivedToken) => {
             setToken(receivedToken);
-            console.log("Turnstile receivedToken:", receivedToken);
-            console.log("Turnstile token:", token);
+            console.log("Turnstile token:", receivedToken);
           },
           "error-callback": (err) => {
             console.error("Turnstile error:", err);
+            setError("Failed to verify with Turnstile");
           },
           "expired-callback": () => {
             console.log("Turnstile token expired");
@@ -43,49 +42,19 @@ const GlobalApiTrigger = () => {
     };
     document.body.appendChild(script);
 
-    // script.onload = () => {
-    //   // setScriptLoaded(true);
-    //   if (window.turnstile && turnstileRef.current) {
-    //     window.turnstile.render(turnstileRef.current, {
-    //       sitekey: "0x4AAAAAABaVYnWlsS_i2pxG",
-    //       action: "track-visit",
-    //       callback: (receivedToken) => {
-    //         setToken(receivedToken);
-    //         console.log("Turnstile receivedToken:", receivedToken);
-    //         console.log("Turnstile token:", token);
-    //       },
-    //       "error-callback": (err) => {
-    //         console.error("Turnstile error:", err);
-    //         // setError("Failed to verify with Turnstile");
-    //       },
-    //       "expired-callback": () => {
-    //         console.log("Turnstile token expired");
-    //         window.turnstile.reset(turnstileRef.current);
-    //       },
-    //       theme: "light",
-    //       size: "normal",
-    //     });
-    //   }
-    // };
-    // document.body.appendChild(script);
-
     return () => {
       document.body.removeChild(script);
-      // if (window.turnstile && turnstileRef.current) {
-      //   window.turnstile.reset(turnstileRef.current);
-      // }
-
-      if (window.turnstile && widgetIdRef.current) {
-        window.turnstile.remove(widgetIdRef.current); // Properly remove the widget
+      if (window.turnstile && turnstileRef.current) {
+        window.turnstile.reset(turnstileRef.current);
       }
     };
   }, []);
 
+  // Handle API call and route validation
   useEffect(() => {
     const validRoutes = ["/", "/about", "/landing", "/resume"];
-
     if (!validRoutes.includes(pathname)) {
-      navigate("/");
+      navigate("/", { replace: true });
       return;
     }
 
@@ -96,28 +65,25 @@ const GlobalApiTrigger = () => {
         const campaignVal = searchParams.get("cmp") || "direct";
 
         let uuid = localStorage.getItem("uuid");
-        if (uuid) {
-          localStorage.setItem("src", sourceVal);
-          localStorage.setItem("cmp", campaignVal);
-        } else {
+        if (!uuid) {
           uuid = uuidv4();
           localStorage.setItem("uuid", uuid);
-          localStorage.setItem("src", sourceVal);
-          localStorage.setItem("cmp", campaignVal);
         }
+        localStorage.setItem("src", sourceVal);
+        localStorage.setItem("cmp", campaignVal);
 
         if (window.location.search) {
           navigate(window.location.pathname, { replace: true });
         }
 
         const payload = {
-          uuid: localStorage.getItem("uuid"),
-          source: localStorage.getItem("src"),
-          campaign: localStorage.getItem("cmp"),
+          uuid,
+          source: sourceVal,
+          campaign: campaignVal,
+          token, // Include Turnstile token if required
         };
 
-        const baseUrl = "http://localhost:8000";
-        // const baseUrl = "https://api.akshuakr.com";
+        const baseUrl = process.env.REACT_APP_API_URL || "https://api.akshuakr.com";
         const res = await fetch(`${baseUrl}/api/v1/user/user-details`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -127,26 +93,28 @@ const GlobalApiTrigger = () => {
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
-        // const data = await res.json();
-        // console.log("Global API call result data:", data);
-      } catch (error) {
-        console.error("Global API call error:", error);
+      } catch (err) {
+        console.error("Global API call error:", err);
+        setError("Failed to record user details");
       }
     };
 
-    callApi();
-  }, []);
+    if (token) {
+      callApi();
+    }
+  }, [pathname, navigate, token]);
 
-  // return null;
   return (
     <div
       style={{
         width: "300px",
         height: "65px",
-        margin: "250px 50px",
+        margin: "10px 0",
+        display: "none", // Hide widget if not meant to be visible
       }}
     >
       <div ref={turnstileRef} />
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };
