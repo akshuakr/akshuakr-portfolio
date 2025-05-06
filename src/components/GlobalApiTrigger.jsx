@@ -11,10 +11,11 @@ const GlobalApiTrigger = () => {
   const [token, setToken] = useState(null);
   const widgetIdRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(true);
-  const [isHuman, setIsHuman] = useState(false);
+  // const [isHuman, setIsHuman] = useState(false);
+  let isHuman = 0;
 
-  const baseUrl = "http://localhost:8000";
-  // const baseUrl = "https://api.akshuakr.com";
+  // const baseUrl = "http://localhost:8000";
+  const baseUrl = "https://api.akshuakr.com";
 
   // Load and render Turnstile
   useEffect(() => {
@@ -27,7 +28,8 @@ const GlobalApiTrigger = () => {
       if (window.turnstile && turnstileRef.current) {
         // Store the widget ID returned by render
         widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
-          sitekey: "0x4AAAAAABaVYnWlsS_i2pxG",
+          // sitekey: "0x4AAAAAABaVYnWlsS_i2pxG",   // Demo Widget Key
+          sitekey: "0x4AAAAAABasHn2iqYhkQVar",   // Portfolio Widget Key
           action: "track-visit",
           callback: (receivedToken) => {
             // () => setToken(receivedToken);
@@ -59,16 +61,15 @@ const GlobalApiTrigger = () => {
     };
   }, []);
 
+  // Handle Turnstile token and user details API calls
   useEffect(() => {
-    if (!token) return; // Wait until token is available
-
-    // console.log("Token state updated:", token);
+    if (!token) return; // Wait for token
 
     const sendTurnstileToken = async () => {
       try {
         const payload = {
           token,
-          uuid: localStorage.getItem("uuid"), // Optionally include UUID or other data
+          uuid: localStorage.getItem("uuid"),
         };
 
         const res = await fetch(`${baseUrl}/api/v1/user/turnstile`, {
@@ -78,38 +79,37 @@ const GlobalApiTrigger = () => {
         });
 
         if (!res.ok) {
-          throw new Error("Turn Ascertain Network response was not ok");
+          throw new Error("Turnstile API response was not ok");
         }
 
         const data = await res.json();
 
-        // console.log("Human Value: ", data.data.human);
+        // if (data.data.human == 1) {
+        //   setIsHuman(true);
+        // }
 
-        if (data.data.human) {
-          // console.log("bhai insan hoon");
-          setIsHuman(true);
-        } else {
-          // console.log("bhai robot hoon");
-        }
-        // console.log("Turnstile API response:", data);
+        isHuman = data.data.human;
+
+        // setIsHuman(!!data.data.human); // Update isHuman based on response
       } catch (error) {
         console.error("Turnstile API call error:", error);
       }
     };
 
-    sendTurnstileToken();
-  }, [token]);
-
-  useEffect(() => {
-    const validRoutes = ["/", "/about", "/landing", "/resume"];
-
-    if (!validRoutes.includes(pathname)) {
-      navigate("/");
-      return;
-    }
-
     const callUserDetailsApi = async () => {
+      // Check if API was already called in this session
+      if (sessionStorage.getItem("userDetailsCalled")) {
+        console.log("User details API already called in this session");
+        return;
+      }
+
       try {
+        const validRoutes = ["/", "/about", "/landing", "/resume"];
+        if (!validRoutes.includes(pathname)) {
+          navigate("/");
+          return;
+        }
+
         const searchParams = new URLSearchParams(window.location.search);
         const sourceVal = searchParams.get("src") || "direct";
         const campaignVal = searchParams.get("cmp") || "direct";
@@ -140,21 +140,29 @@ const GlobalApiTrigger = () => {
         });
 
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("User details API response was not ok");
         }
-        // const data = await res.json();
-        // console.log("Global API call result data:", data);
+
+        // Mark API as called in this session
+        sessionStorage.setItem("userDetailsCalled", "true");
       } catch (error) {
-        console.error("Global API call error:", error);
+        console.error("User details API call error:", error);
       }
     };
 
-    callUserDetailsApi();
-  }, []);
+    // Execute both APIs sequentially
+    const executeApis = async () => {
+      await sendTurnstileToken(); // Wait for Turnstile API to complete
+      await callUserDetailsApi(); // Then call user details API
+    };
+
+    executeApis();
+  }, [token, navigate]); // Only depend on token and navigate
 
   // return null;
   return (
     <div>
+      {/* <div style={{color: 'yellow', fontSize: '27px'}}>{isHuman}</div> */}
       {isModalOpen && (
         <div
           style={{
@@ -163,7 +171,7 @@ const GlobalApiTrigger = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -172,7 +180,8 @@ const GlobalApiTrigger = () => {
         >
           <div
             style={{
-              backgroundColor: "white",
+              // backgroundColor: "#212121",
+              backgroundColor: "#303030",
               padding: "20px",
               borderRadius: "8px",
               boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
